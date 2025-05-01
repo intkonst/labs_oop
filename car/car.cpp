@@ -22,7 +22,7 @@ Car::Car() {
 }
 
 Car::Car(char* state_number, int count_of_seats, bool is_electic, float power)
-    : _count_of_seats(count_of_seats), _is_electic(is_electic), _power(_power) {
+    : _count_of_seats(count_of_seats), _is_electic(is_electic), _power(power) {
     _state_number = new char[std::strlen(state_number) + 1];
     std::strcpy(_state_number, state_number);
 

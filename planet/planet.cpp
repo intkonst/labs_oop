@@ -60,7 +60,7 @@ std::istream& operator>>(std::istream& in, Planet*& planet) {
 std::ostream& operator<<(std::ostream& os, const Planet& planet) {
     os << "Planet ID: " << planet._id << ", Name: " << planet._name << ", ";
     os << "Diameter: " << planet._diameter << ", ";
-    os << (planet._has_life ? "Has life" : "Hasn't life") << ", ";
+    os << (planet._has_life ? "Has life" : "Has no life") << ", ";
     os << "Satellites: " << planet._count_of_satellites;
 
     return os;
