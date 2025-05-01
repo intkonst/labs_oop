@@ -7,7 +7,7 @@
 
 namespace {
 
-    const int BUFFER_SIZE = 256;
+    const int BUFFER_SIZE = 1024;
 
 } // namespace
 
@@ -22,26 +22,29 @@ namespace app {
         int size = 0;
         planet::Planet::readFromFile(filename, solarSystem, size);
     
-        std::cout << std::endl << "Before sorting" << std::endl;
+        std::cout << std::endl << "System before sorting: " << std::endl;
         planet::Planet::print(solarSystem, size);
         planet::Planet::sort(solarSystem, size);
-        std::cout << std::endl << "After sorting" << std::endl;
+        std::cout << std::endl << "System after sorting: " << std::endl;
         planet::Planet::print(solarSystem, size);
     
-        char* plutoName = new char[6];
-        std::strcpy(plutoName, "Pluno");
-        planet::Planet* pluto = new planet::Planet(plutoName, 2280, 0, 1);
-        delete plutoName;
-        std::cout << std::endl << *pluto << " - appending to solar system" << std::endl << std::endl;
-        planet::Planet::append(solarSystem, size, pluto);
+        char* marsName = new char[6];
+        std::strcpy(marsName, "Mars");
+        planet::Planet* mars = new planet::Planet(marsName, 6786, 1, 2);
+        delete marsName;
+
+        std::cout << std::endl << *mars << "  => adding to system" << std::endl << std::endl;
+        planet::Planet::append(solarSystem, size, mars);
         planet::Planet::print(solarSystem, size);
-        planet::Planet* removePlanet = solarSystem[std::min(size, 5)];
-        std::cout << std::endl << *removePlanet << " - removing from solar system" << std::endl << std::endl;
+        planet::Planet* removePlanet = solarSystem[std::min(size, 4)];
+        std::cout << std::endl << *removePlanet << " => remove from system" << std::endl << std::endl;
         planet::Planet::remove(solarSystem, size, removePlanet);
         planet::Planet::print(solarSystem, size);
+
+        planet::Planet::edit_diameter(solarSystem, size, 1, 1);
     
         const char* fileout = "output.txt";
-        std::cout << "Write changes to file " << fileout << std::endl;
+        std::cout << "Write updates in the file: " << fileout << std::endl;
         planet::Planet::writeToFile(fileout, solarSystem, size);
     
         delete[] solarSystem;
@@ -51,8 +54,16 @@ namespace app {
     void runInteractiveMode(){
         std::cout << "Welcome to interactive mode!" << std::endl;
 
+        
         const char* filename = "carpark.txt";
         
+        int size = 0;
+        car::Car** carpark = new car::Car*[BUFFER_SIZE];
+        car::Car::readFromFile(filename, carpark, size);
+
+        const char* fileout = "output.txt";
+        car::Car::writeToFile(fileout, carpark, size);
+
 
     }
 

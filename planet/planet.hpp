@@ -29,8 +29,9 @@ class Planet {
     static void writeToFile(const char* filename, Planet** planets, int& size);
 
     static void print(Planet**& planets, int& size);
+    static void edit_diameter(Planet**&, int& size, int id, int diameter);
     static void sort(Planet**& planets, int& size);
-
+    
     static void append(Planet**& planets, int& size, Planet* planet);
     static void remove(Planet**& planets, int& size, Planet* planet);
 };
