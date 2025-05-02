@@ -2,7 +2,7 @@
 #include <cstring>
 
 #include "app.hpp"
-
+#include "../fraction/fraction.hpp"
 
 namespace {
 

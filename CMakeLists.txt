@@ -14,8 +14,7 @@ set(${project}_HEADERS
     src/app.hpp
 )
 
-# add_subdirectory(planet)
-# add_subdirectory(car)
+add_subdirectory(fraction)
 
 set(${project}_SOURCE_LIST
     ${${project}_SOURCES}
@@ -26,15 +25,8 @@ add_executable(${project}
     ${${project}_SOURCE_LIST}
 )
 
-# target_link_libraries(${project} planet car)
+# target_link_libraries(${project} fraction)
 
-# configure_file(${CMAKE_CURRENT_SOURCE_DIR}/db/system.txt
-#     ${CMAKE_CURRENT_BINARY_DIR} COPYONLY
-# )
-
-# configure_file(${CMAKE_CURRENT_SOURCE_DIR}/db/carpark.txt
-#     ${CMAKE_CURRENT_BINARY_DIR} COPYONLY
-# )Вариант: автомобиль
 
 set_target_properties(${project} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.bin
