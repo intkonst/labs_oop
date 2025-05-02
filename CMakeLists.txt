@@ -36,6 +36,8 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/db/carpark.txt
     ${CMAKE_CURRENT_BINARY_DIR} COPYONLY
 )
 
+
+
 set_target_properties(${project} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/.bin
 )
