@@ -1,3 +1,0 @@
-/home/intkonst/Projects/labs/labs_oop/.build/CMakeFiles/lab_3.dir
-/home/intkonst/Projects/labs/labs_oop/.build/CMakeFiles/edit_cache.dir
-/home/intkonst/Projects/labs/labs_oop/.build/CMakeFiles/rebuild_cache.dir
