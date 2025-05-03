@@ -161,11 +161,11 @@ Fraction operator+(int number, const Fraction& other) {
     return other + number;
 }
 
-void Fraction::operator+=(const Fraction& other) {
+Fraction& Fraction::operator+=(const Fraction& other) {
     *this = *this + other;
 }
 
-void Fraction::operator+=(double number) {
+Fraction& Fraction::operator+=(double number) {
     *this = *this + number;
 }
 
