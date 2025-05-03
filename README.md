@@ -1,1 +1,1 @@
-<span style="color:red">L</span>IGHT WEIGHT BABYYYYYYYYYYYYYYYYY
+<span style="color:#012345">L</span>IGHT WEIGHT BABYYYYYYYYYYYYYYYYY
