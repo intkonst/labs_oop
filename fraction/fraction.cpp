@@ -69,16 +69,13 @@ void Fraction::parse_str(const char* str) {
     int str_len = std::strlen(str);
 
     enum class Mode {
+        null,
         base,
         numerator,
         denominator,
     };
 
-    if (is_char_in_str(str, SPACE)) {
-        Mode mode = Mode::base;
-    } else {
-        Mode mode = Mode::numerator;
-    }
+    Mode mode = is_char_in_str(str, SPACE) ? Mode::base : Mode::numerator;
 
     for (int i = 0; i < str_len; i++) {
         char current = str[i];
