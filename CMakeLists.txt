@@ -25,7 +25,7 @@ add_executable(${project}
     ${${project}_SOURCE_LIST}
 )
 
-# target_link_libraries(${project} fraction)
+target_link_libraries(${project} fraction)
 
 
 set_target_properties(${project} PROPERTIES

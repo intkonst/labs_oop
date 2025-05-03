@@ -18,7 +18,7 @@ set(${project}_SOURCE_LIST
     ${${project}_HEADERS}
 )
 
-# add_library(${project}
-#     STATIC
-#     ${${project}_SOURCE_LIST}
-# )
+add_library(${project}
+    STATIC
+    ${${project}_SOURCE_LIST}
+)
