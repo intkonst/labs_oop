@@ -30,8 +30,8 @@ class Fraction {
     friend Fraction operator+(double number, const Fraction& other);
     friend Fraction operator+(int number, const Fraction& other);
 
-    Fraction& operator+=(const Fraction& other);
-    Fraction& operator+=(double number);
+    void operator+=(const Fraction& other);
+    void operator+=(double number);
 
     friend std::ostream& operator<<(std::ostream& os, const Fraction& fraction);
     friend std::istream& operator>>(std::istream& is, Fraction& fraction);
