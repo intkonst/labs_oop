@@ -26,6 +26,7 @@ class Fraction {
     Fraction operator+(const Fraction& other) const;
     Fraction operator+(double number) const;
     Fraction operator+(int number) const;
+    
     friend Fraction operator+(double number, const Fraction& other);
     friend Fraction operator+(int number, const Fraction& other);
 

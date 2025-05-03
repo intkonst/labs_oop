@@ -61,89 +61,59 @@ void Fraction::is_correct() {
 }
 
 void Fraction::parse_str(const char* str) {
+    positive = true;
     base = 0;
     numerator = 0;
-    denominator = 1;
-    positive = true;
+    denominator = 0;
 
-    const size_t strLen = std::strlen(str);
+    int str_len = std::strlen(str);
 
-    if (strLen == 0) {
-        throw std::invalid_argument("Empty input string");
-    }
-
-    // Определение начального режима парсера
     enum class Mode {
-        BASE,       // Парсим целую часть
-        NUMERATOR,   // Парсим числитель
-        DENOMINATOR  // Парсим знаменатель
+        base,
+        numerator,
+        denominator,
     };
 
-    Mode mode = (std::strchr(str, SPACE) ? Mode::BASE : Mode::NUMERATOR);
+    if (is_char_in_str(str, SPACE)) {
+        Mode mode = Mode::base;
+    } else {
+        Mode mode = Mode::numerator;
+    }
 
-    for (size_t i = 0; i < strLen; ++i) {
-        const char current = str[i];
-
-        // Обработка знака
+    for (int i = 0; i < str_len; i++) {
+        char current = str[i];
         if (current == MINUS && i == 0) {
             positive = false;
-            continue;
-        }
+        } else if (current == SPACE && mode == Mode::base) {
+            mode = Mode::numerator;
+        } else if (current == SLASH && mode == Mode::numerator) {
+            mode = Mode::denominator;
+        } else if (char_is_num(current)) {
 
-        // Обработка разделителей
-        switch (current) {
-            case SPACE:
-                if (mode == Mode::BASE) {
-                    mode = Mode::NUMERATOR;
-                    continue;
-                }
-                break;
-                
-            case SLASH:
-                if (mode == Mode::NUMERATOR) {
-                    mode = Mode::DENOMINATOR;
-                    continue;
-                }
-                break;
-        }
+            if (mode == Mode::base) {
+                base = base * 10 + char_to_int(current);
+                if (base > MAX_INT) throw std::runtime_error("Base is over big");
 
-        // Обработка цифр
-        if (char_is_num(current)) {
-            const int digit = char_to_int(current);
-            
-            switch (mode) {
-                case Mode::BASE:
-                    base = base * 10 + digit;
-                    if (base > MAX_INT) throw std::invalid_argument("Whole part is very large");
-                    break;
-                    
-                case Mode::NUMERATOR:
-                    numerator = numerator * 10 + digit;
-                    if (numerator > MAX_INT) throw std::invalid_argument("Numerator is very large");
-                    break;
-                    
-                case Mode::DENOMINATOR:
-                    denominator = denominator * 10 + digit;
-                    if (denominator > MAX_INT) throw std::invalid_argument("Denominator is very large");
-                    break;
+            } else if (mode == Mode::numerator) {
+                numerator = numerator * 10 + char_to_int(current);
+                if (numerator > MAX_INT) throw std::runtime_error("Numerator is over big");
+
+            } else if (mode == Mode::denominator) {
+                denominator = denominator * 10 + char_to_int(current);
+                if (denominator > MAX_INT) throw std::runtime_error("Numerator is over big.");
             }
+
         } else {
-            throw std::invalid_argument("Invalid character in input. ");
+            throw std::runtime_error("Invalid input string");
         }
     }
 
-    // Проверка корректности результата
-    if (denominator == 0 && numerator != 0) {
-        throw std::invalid_argument("Denominator cannot be zero");
-    }
-
-    if (mode == Mode::NUMERATOR && std::strchr(str, SLASH)) {
-        throw std::invalid_argument("Invalid fraction format");
+    if (mode == Mode::numerator) {
+        throw std::runtime_error("Invalid input string");
     }
 }
 
-Fraction::Fraction() : base(0), numerator(0), denominator(1), positive(true) {
-}
+Fraction::Fraction() : base(0), numerator(0), denominator(1), positive(true) {}
 
 Fraction::Fraction(const char* str) {
     parse_str(str);
