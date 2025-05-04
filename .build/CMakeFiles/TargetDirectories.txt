@@ -1,6 +1,0 @@
-/home/intkonst/Projects/labs/labs_oop/.build/CMakeFiles/lab_4.dir
-/home/intkonst/Projects/labs/labs_oop/.build/CMakeFiles/edit_cache.dir
-/home/intkonst/Projects/labs/labs_oop/.build/CMakeFiles/rebuild_cache.dir
-/home/intkonst/Projects/labs/labs_oop/.build/stack/CMakeFiles/stack.dir
-/home/intkonst/Projects/labs/labs_oop/.build/stack/CMakeFiles/edit_cache.dir
-/home/intkonst/Projects/labs/labs_oop/.build/stack/CMakeFiles/rebuild_cache.dir
