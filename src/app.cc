@@ -1,9 +1,9 @@
 #include <iostream>
 #include <cstring>
 
-#include "app.hpp"
-#include "../planet/planet.hpp"
-#include "../car/car.hpp"
+#include "app.h"
+#include "../planet/planet.h"
+#include "../car/car.h"
 
 namespace {
 

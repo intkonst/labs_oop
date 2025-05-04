@@ -2,7 +2,7 @@
 #include <fstream>
 #include <iostream>
 
-#include "planet.hpp"
+#include "planet.h"
 
 
 namespace {

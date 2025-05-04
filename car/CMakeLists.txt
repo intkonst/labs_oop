@@ -6,11 +6,11 @@ project(${project})
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-    car.cpp
+    car.cc
 )
 
 set(${project}_HEADERS
-    car.hpp
+    car.h
 )
 
 set(${project}_SOURCE_LIST

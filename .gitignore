@@ -1,8 +1,2 @@
-*.cmake
-CMakeCache.txt
-Makefile
-bin/
-CMakeFiles
 .build
 .bin
-todo

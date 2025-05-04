@@ -6,11 +6,11 @@ project(${project})
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-    planet.cpp
+    planet.cc
 )
 
 set(${project}_HEADERS
-    planet.hpp
+    planet.h
 )
 
 set(${project}_SOURCE_LIST
