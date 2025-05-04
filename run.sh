@@ -1,7 +1,13 @@
 #!/bin/zsh
 
+
+lab_name="lab_5"
+ex_cmd="./lab_5"
+
+
 # Сохраняем исходную директорию
 ORIGINAL_DIR=$(pwd)
+
 
 echo "\n===== Starting build process in $(pwd) ====="
 
@@ -25,8 +31,8 @@ make -C .build || {
 echo -e "\nStep 3: Running program..."
 {
     cd .bin && \
-    echo "Running in: $(pwd)\n\n====lab_5==================================================================\n" && \
-    ./lab_5
+    echo "Running in: $(pwd)\n\n====$lab_name==================================================================\n" && \
+    eval "$ex_cmd"
 } || {
     echo "❌ Execution failed"
     cd "$ORIGINAL_DIR"
