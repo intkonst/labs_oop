@@ -1,4 +1,5 @@
 #!/bin/zsh
+#!/bin/bash
 
 lab_name="lab_3"
 ex_cmd="./lab_3"
