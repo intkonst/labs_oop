@@ -12,7 +12,7 @@ echo "Script arguments: $@"
 # 1. Генерация проекта CMake
 echo "Step 1: Running CMake..."
 if ! cmake -B .build; then
-    echo "❌ CMake failed"
+    echo "\n❌ CMake failed"
     cd "$ORIGINAL_DIR"
     return 1 2>/dev/null || exit 1
 fi
@@ -20,7 +20,7 @@ fi
 # 2. Сборка проекта
 echo -e "\nStep 2: Building project..."
 if ! make -C .build; then
-    echo "❌ Build failed"
+    echo "\n❌ Build failed"
     cd "$ORIGINAL_DIR"
     return 1 2>/dev/null || exit 1
 fi
@@ -30,7 +30,7 @@ echo -e "\nStep 3: Running program with arguments: $@"
 if ! (cd .bin && \
      echo -e "Running in: $(pwd)\n\n====$lab_name==================================================================\n" && \
      eval "$ex_cmd $@"); then
-    echo "❌ Execution failed"
+    echo "\n❌ Execution failed"
     cd "$ORIGINAL_DIR"
     return 1 2>/dev/null || exit 1
 fi
