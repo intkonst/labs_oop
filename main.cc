@@ -1,4 +1,4 @@
-#include "src/app.hpp"
+#include "src/app.h"
 
 int main(int argc, char** argv) {
     app::run(argc, argv);

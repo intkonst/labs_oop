@@ -6,11 +6,11 @@ project(${project})
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-    fraction.cpp
+    fraction.cc
 )
 
 set(${project}_HEADERS
-    fraction.hpp
+    fraction.h
 )
 
 set(${project}_SOURCE_LIST

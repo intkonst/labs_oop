@@ -1,8 +1,8 @@
 #include <iostream>
 #include <cstring>
 
-#include "app.hpp"
-#include "../fraction/fraction.hpp"
+#include "app.h"
+#include "../fraction/fraction.h"
 
 namespace {
 

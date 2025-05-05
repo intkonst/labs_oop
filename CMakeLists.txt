@@ -6,12 +6,12 @@ project(${project})
 set(CMAKE_CXX_STANDARD 17)
 
 set(${project}_SOURCES
-    main.cpp
-    src/app.cpp
+    main.cc
+    src/app.cc
 )
 
 set(${project}_HEADERS
-    src/app.hpp
+    src/app.h
 )
 
 add_subdirectory(fraction)
