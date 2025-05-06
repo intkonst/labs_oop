@@ -30,6 +30,21 @@ Car::Car(char* state_number, int count_of_seats, bool is_electic, float power)
     std::cout << "Create car with parameters | ID: " << _id << std::endl;
 }
 
+Car* Car::get_obj_by_id(Car**& carpark, int& size, int id) {
+    bool id_is_find = false;
+    for(int i = 0; i < size; i++) {
+        if (carpark[i]->_id == id) {
+            id_is_find = true;
+            return carpark[i]; 
+        }
+    }
+    if (!id_is_find){
+        std::cout << "Error: Unknown ID of car." << std::endl;
+        return nullptr;
+    }
+    return nullptr;
+}
+
 Car::~Car() {
     delete[] _state_number;
     std::cout << "Delete car | ID: " << _id << std::endl;
@@ -85,6 +100,7 @@ void Car::readFromFile(const char* filename, Car** carpark, int& size) {
     }
 
     delete[] carpark;
+    Car::_n = 0;
     carpark = new Car*[size];
     for (int i = 0; i < size; i++) {
         carpark[i] = buffer[i];
@@ -115,6 +131,53 @@ void Car::edit_power(Car**& carpark, int& size, int id, float power) {
         if (carpark[i]->_id == id) {
             id_is_find = true;
             carpark[i]->_power = power;
+            std::cout << "Мощность автомобиля с ID: " << carpark[i]->_id << " была успешно изменена..." << std::endl;
+            return;
+        }
+    }
+    if (!id_is_find){
+        std::cout << "Error: Unknown ID of car. Check correct ID by using print function." << std::endl;
+    }
+}
+
+void Car::edit_type(Car**& carpark, int& size, int id, bool is_electic) {
+    bool id_is_find = false;
+    for(int i = 0; i < size; i++) {
+        if (carpark[i]->_id == id) {
+            id_is_find = true;
+            carpark[i]->_is_electic = is_electic;
+            std::cout << "Тип питания автомобиля с ID: " << carpark[i]->_id << " был успешно изменен..." << std::endl;
+            return;
+        }
+    }
+    if (!id_is_find){
+        std::cout << "Error: Unknown ID of car. Check correct ID by using print function." << std::endl;
+    }
+}
+
+void Car::edit_state_number(Car**& carpark, int& size, int id, char* state_number) {
+    bool id_is_find = false;
+    for(int i = 0; i < size; i++) {
+        if (carpark[i]->_id == id) {
+            id_is_find = true;
+            std::strcpy(carpark[i]->_state_number, state_number);
+            std::cout << "Госномер автомобиля с ID: " << carpark[i]->_id << " был успешно изменен..." << std::endl;
+            return;
+        }
+    }
+    if (!id_is_find){
+        std::cout << "Error: Unknown ID of car. Check correct ID by using print function." << std::endl;
+    }
+}
+
+void Car::edit_count_of_seats(Car**& carpark, int& size, int id, bool count_of_seats) {
+    bool id_is_find = false;
+    for(int i = 0; i < size; i++) {
+        if (carpark[i]->_id == id) {
+            id_is_find = true;
+            carpark[i]->_count_of_seats = count_of_seats;
+            std::cout << "Количество мест автомобиля с ID: " << carpark[i]->_id << " было успешно изменено..." << std::endl;
+            return;
         }
     }
     if (!id_is_find){
@@ -131,6 +194,8 @@ void Car::sort(Car**& carpark, int& size) {
         }
     }
 }
+
+
 
 void Car::append(Car**& carpark, int& size, Car* car) {
     if (carpark != nullptr) {
