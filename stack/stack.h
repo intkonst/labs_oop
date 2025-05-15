@@ -51,8 +51,10 @@ class Stack {
         }
         
         void output();
+        void reverse();
         Stack(const Stack<T>& stack);
         Stack<T>& operator=(const Stack<T>& stack);
+
 
         ~Stack(void) {                 
             while (!empty()) {
@@ -63,6 +65,7 @@ class Stack {
 
 template<class T>
 Stack<T>& Stack<T>::operator=(const Stack<T>& stack) {
+    std::cout << "функция вызвалась 1" << std::endl;
     if (this == &stack) {
         return *this;  
     }
@@ -70,7 +73,7 @@ Stack<T>& Stack<T>::operator=(const Stack<T>& stack) {
     while (!empty()) {
         pop();
     }
-
+    std::cout << "функция вызвалась" << std::endl;
     if (stack.top) {
         Node* current = stack.top;
         Node* newTop = new Node();
@@ -79,15 +82,20 @@ Stack<T>& Stack<T>::operator=(const Stack<T>& stack) {
 
         Node* newCurrent = newTop;
         current = current->next;
+        
 
+        std::cout << "я в ифе" << std::endl;
         while (current) {
             Node* newNode = new Node();
+
             newNode->value = current->value;
             newCurrent->next = newNode;
             newCurrent = newNode;
             current = current->next;
+            std::cout << "я в цикле" << std::endl;
         }
     }
+
     return *this;
 }
 
@@ -107,6 +115,19 @@ void Stack<T>::output() {
 }
 
 template<class T>
+void Stack<T>::reverse() {
+ Node* current = top;
+ top = nullptr;
+ 
+ while (current) {
+ Node* next = current->next;
+ current->next = top;
+ top = current;
+ current = next;
+ }
+}
+
+template<class T>
 Stack<T>::Stack(const Stack<T>& stack) {
     top = nullptr; 
     Node* node = stack.top;
@@ -116,4 +137,24 @@ Stack<T>::Stack(const Stack<T>& stack) {
     }
 }
 
+
+
+template<class T>
+Stack<T>::Stack(const Stack<T>& stack) {
+    Stack<T> temp;
+    
+    Node* current = stack.top;
+    while (current != nullptr) {
+        temp.push(current->value);
+        current = current->next;
+    }
+    
+    while (!temp.empty()) {
+        this->push(temp.pop());
+    }
 }
+
+}
+
+
+
